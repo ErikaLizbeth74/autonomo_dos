@@ -51,6 +51,10 @@ for i in range(0, len(simbolos)):
 print(escena)
 
 ## PARTE  DOS DEL TRABAJO
+## PARTE  DOS DEL TRABAJO
+## PARTE  DOS DEL TRABAJO
+## PARTE  DOS DEL TRABAJO
+## PARTE  DOS DEL TRABAJO
 
 palabras = ("leon", "tigre", "delfin", "manzana", "perro", "mandarina", "sandia")
 palabra = random.choice(palabras)
