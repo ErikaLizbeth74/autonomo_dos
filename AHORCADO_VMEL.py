@@ -50,7 +50,33 @@ for i in range(0, len(simbolos)):
     escena = escena.replace(str(i), simbolo)
 print(escena)
 
-letra = input('Introduce una letra : ')
+## PARTE  DOS DEL TRABAJO
+
+palabras = ("leon", "tigre", "delfin", "manzana", "perro", "mandarina", "sandia")
+palabra = random.choice(palabras)
+letra_adivinadas=[]
+
+while True:
+
+    text = input("Ingrese una letra del abecedario o la palabra completa: ").lower()
+    letra_adivinadas.append(text)
+    
+    palabra_oculta = " "
+    for c in palabra:
+        if c in letra_adivinadas:
+            palabra_oculta+=c
+        else:
+            palabra_oculta+= "_"
+    print(palabra_oculta)
+
+    if "_" not in palabra_oculta:
+        print("Felicidades has Ganado la palabra es",(palabra))
+        break
+
+    elif len(text) == len(palabra):
+        if text == palabra:
+            print("Has ganado la palabra es",(palabra))
+            break
     
 
 
