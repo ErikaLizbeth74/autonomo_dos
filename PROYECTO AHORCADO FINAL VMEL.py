@@ -123,16 +123,15 @@ def mostrar_tablero(intentos):
     ]
     print(figura[intentos])
 
-
-def jugar():
+def jugar ():
 
     palabras = ("leon", "tigre")
     palabra = random.choice(palabras)
     letra_adivinadas=[]
     intentos = 6
-
+    
     print('\n')
-    print(f'Tienes 6 intentos antes de perden BUENA SUERTE!')
+    print(f'Tienes {intentos} intentos antes de perden BUENA SUERTE!')
     print('\n')
 
     while True:
@@ -151,6 +150,11 @@ def jugar():
 
         print('\n')
         text = input("Ingrese una letra del abecedario o la palabra completa: ").lower()
+        print('\n')
+        valida = 'a' <= text <= 'z'
+        if not valida:
+                print('Error solo se permite letras no numneros')
+                continue
         print('\n')
         
         if text in letra_adivinadas:
@@ -177,7 +181,7 @@ def jugar():
             Perdida()
             break
 
-        elif len(text) == len(palabra):
+        elif set(text) == set(palabra):
             if text == palabra:
                 print("Has ganado la palabra completa es",(palabra))
                 print('\n')
@@ -194,3 +198,4 @@ def jugar():
     print('\n')
 
 jugar()
+
