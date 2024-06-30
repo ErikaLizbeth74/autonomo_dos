@@ -124,76 +124,73 @@ def mostrar_tablero(intentos):
     print(figura[intentos])
 
 
-palabras = ("leon", "tigre")
-palabra = random.choice(palabras)
-letra_adivinadas=[]
-intentos = 6
+def jugar():
 
-
-print(f'Tienes {intentos} intentos antes de perden BUENA SUERTE!')
-
-print('\n')
-
-
-    
-while True:
-
-    mostrar_tablero(intentos)
-    print('\n')
-
-    palabra_oculta = " "
-    for c in palabra:
-        if c in letra_adivinadas:
-            palabra_oculta+=c
-            intentos>1
-        else:
-            palabra_oculta+= " _ "
-    print(palabra_oculta)
+    palabras = ("leon", "tigre")
+    palabra = random.choice(palabras)
+    letra_adivinadas=[]
+    intentos = 6
 
     print('\n')
-    text = input("Ingrese una letra del abecedario o la palabra completa: ").lower()
+    print(f'Tienes 6 intentos antes de perden BUENA SUERTE!')
     print('\n')
-    valida = 'a' <= text <= 'z'
-    if not valida:
-            print('Error solo se permite letras no numneros')
+
+    while True:
+
+        mostrar_tablero(intentos)
+        print('\n')
+
+        palabra_oculta = " "
+        for c in palabra:
+            if c in letra_adivinadas:
+                palabra_oculta+=c
+                intentos>1
+            else:
+                palabra_oculta+= " _ "
+        print(palabra_oculta)
+
+        print('\n')
+        text = input("Ingrese una letra del abecedario o la palabra completa: ").lower()
+        print('\n')
+        
+        if text in letra_adivinadas:
+            print('Ya has introducido la letra',text,'Prueba con otra.')
             continue
-    print('\n')
-    
-    if text in letra_adivinadas:
-        print('Ya has introducido la letra',text,'Prueba con otra.')
-        continue
 
-    if text in palabra:
-        letra_adivinadas.append(text)
-        if set(letra_adivinadas)==set(palabra):
-            print("Felicidades has Ganado la palabra es",(palabra))
+        if text in palabra:
+            letra_adivinadas.append(text)
+            if set(letra_adivinadas)==set(palabra):
+                print("Felicidades has Ganado la palabra es",(palabra))
+                print('\n')
+                Felicidades()
+                break
+        else:
+            intentos-=1
             print('\n')
-            Felicidades()
+            print(f"Letra o palabra incorrecta, Te qudan",(intentos),"oportunidades")
+            print('\n')
+
+        if intentos==0:
+            print('\n')
+            print(f"Lo sineto has perdido, la palabra era",(palabra))
+            print('\n')
+            Perdida()
             break
+
+        elif len(text) == len(palabra):
+            if text == palabra:
+                print("Has ganado la palabra completa es",(palabra))
+                print('\n')
+                Felicidades()
+            break
+
+    print('\n')
+    jugar_otra_vez = input("¿Quieres jugar de nuevo? (si/no): ").lower()
+    if jugar_otra_vez == "si":
+        jugar()
+        print('\n')
     else:
-        intentos-=1
-        print('\n')
-        print(f"Letra o palabra incorrecta, Te qudan",(intentos),"oportunidades")
-        print('\n')
+        print("¡Gracias por jugar!")
+    print('\n')
 
-    if intentos==0:
-        print('\n')
-        print(f"Lo sineto has perdido, la palabra era",(palabra))
-        print('\n')
-        Perdida()
-        break
-
-    elif set(text) == set(palabra):
-        if text == palabra:
-            print("Has ganado la palabra completa es",(palabra))
-            print('\n')
-            Felicidades()
-        break
-
-
-print('\n')
-
-
-
-
-
+jugar()
