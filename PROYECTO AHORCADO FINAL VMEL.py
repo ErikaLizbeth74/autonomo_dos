@@ -125,7 +125,7 @@ def mostrar_tablero(intentos):
 
 def jugar ():
 
-    palabras = ("leon", "tigre")
+    palabras = ("leon", "tigre","manzana","perro","geopardo","mandarina","coco","vinocunga")
     palabra = random.choice(palabras)
     letra_adivinadas=[]
     intentos = 6
